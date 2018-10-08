@@ -1,22 +1,12 @@
 const LinkedList = require('./LinkedList');
 
 class HashMap {
-    constructor(initialCapacity = 8) {
+    constructor(initialCapacity = 9) {
         this.length = 0;
         this._slots = [];
         this._capacity = initialCapacity;
         this._deleted = 0;
     }
-
-    static _hashString(string) {
-        let hash = 5381;
-        for (let i = 0; i < string.length; i++) {
-            hash = (hash << 5) + hash + string.charCodeAt(i);
-            hash = hash & hash;
-        }
-        return hash >>> 0;
-    }
-
 
     get(key) {
         const index = this._findSlot(key);
@@ -41,9 +31,8 @@ class HashMap {
                 deleted: false
 
             })
-        }
             this.length++;
-        else
+        } else
             {
                 this._slots[index].insertLast({
                     key,
@@ -94,8 +83,18 @@ class HashMap {
         }
     }
 
-
+    static _hashString(string) {
+        let hash = 5381;
+        for (let i = 0; i < string.length; i++) {
+            hash = (hash << 5) + hash + string.charCodeAt(i);
+            hash = hash & hash;
+        }
+        return hash >>> 0;
+    }
 }
 
-HashMap.MAX_LOAD_RATIO = 0.7;
-HashMap.SIZE_RATIO = 2;
+
+HashMap.MAX_LOAD_RATIO = 0.9;
+HashMap.SIZE_RATIO = 3;
+
+module.exports = HashMap;

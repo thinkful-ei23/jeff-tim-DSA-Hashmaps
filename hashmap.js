@@ -99,7 +99,7 @@ function main() {
   lor.set('HalfElven', 'Arwen');
   lor.set('Ent', 'Treebeard');
 
-  console.log(json.Stringify(lor, null, 2));
+  console.log(JSON.stringify(lor, null, 2));
 }
 
 main();
